@@ -25,7 +25,7 @@ import rx.Observable
  * time:2018 05 24 15:17
  * package_name:jmm.jmmworkplan.ui.fragment
  */
-abstract class BaseRvFragment<T> : Fragment() {
+open abstract class BaseRvFragment<T> : Fragment() {
 
     internal lateinit var mRvAdapter: BaseRvAdapter<T>
     protected var mPageCount: Int = 0
@@ -61,6 +61,7 @@ abstract class BaseRvFragment<T> : Fragment() {
             recyclerView.addItemDecoration(getItemDecoration())
         }
         mRvAdapter = getRecyclerViewAdapter()
+        mRvAdapter.openLoadAnimation()
         recyclerView.setAdapter(mRvAdapter)
         mRvAdapter.setEnableLoadMore(true) //开启加载更多
         //        mRvAdapter.setLoadMoreView(new CustomLoadMoreView());     //自定义加载更多
@@ -116,7 +117,9 @@ abstract class BaseRvFragment<T> : Fragment() {
             override fun onStart() {
                 super.onStart()
                 if (status === LoadStatus.LOADING) {
-                    recyclerView.scrollToPosition(0)
+                    if(recyclerView != null){
+                        recyclerView.scrollToPosition(0)
+                    }
                 }
             }
 
@@ -174,21 +177,21 @@ abstract class BaseRvFragment<T> : Fragment() {
 
     protected abstract fun getRecyclerViewAdapter(): BaseRvAdapter<T>
 
-    protected fun getItemDecoration(): RecyclerView.ItemDecoration? {
+    protected open fun getItemDecoration(): RecyclerView.ItemDecoration? {
         return null
     }
 
     protected abstract fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int)
 
-    protected fun onItemChildClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
+    protected open fun onItemChildClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
 
     }
 
-    protected fun onItemLongClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
+    protected open fun onItemLongClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
 
     }
 
-    protected fun onItemChildLongClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
+    protected open fun onItemChildLongClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
 
     }
 

@@ -27,7 +27,9 @@ public class SaveCookiesInterceptor implements Interceptor {
                     cookies.add(header);
                 }
             }
-            SpUtils.INSTANCE.putString(Constant.COOKIES, cookies.get(0).toString());
+            if (!cookies.isEmpty()) {
+                SpUtils.INSTANCE.putString(Constant.COOKIES, cookies.get(0).toString());
+            }
 
 //            Preferences.getDefaultPreferences().edit()
 //                    .putStringSet(Preferences.PREF_COOKIES, cookies)

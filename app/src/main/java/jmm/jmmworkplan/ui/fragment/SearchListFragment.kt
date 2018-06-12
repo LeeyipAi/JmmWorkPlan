@@ -14,10 +14,10 @@ import rx.schedulers.Schedulers
 
 /**
  * user:Administrator
- * time:2018 05 24 15:41
+ * time:2018 05 29 16:15
  * package_name:jmm.jmmworkplan.ui.fragment
  */
-class WorkPlanFragment : BaseRvFragment<WorkInfo.DataBean>() {
+class SearchListFragment: BaseRvFragment<WorkInfo.DataBean>() {
 
     private var pageCount: String? = null
     lateinit var ownWorkPlanAdapter: OwnWorkPlanAdapter
@@ -50,4 +50,3 @@ class WorkPlanFragment : BaseRvFragment<WorkInfo.DataBean>() {
 
 
 }
-

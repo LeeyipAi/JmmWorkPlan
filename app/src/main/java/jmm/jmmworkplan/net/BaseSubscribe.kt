@@ -19,5 +19,6 @@ open class BaseSubscriber<T>():Subscriber<T>() {
     }
 
     override fun onError(e: Throwable?) {
+        e?.printStackTrace()
     }
 }
